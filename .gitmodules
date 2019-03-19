@@ -1,0 +1,9 @@
+[submodule "PhotoSketch"]
+	path = PhotoSketch
+	url = https://github.com/mtli/PhotoSketch
+[submodule "pix2pix-tensorflow"]
+	path = pix2pix-tensorflow
+	url = https://github.com/GreenAppers/pix2pix-tensorflow
+[submodule "Mask_RCNN"]
+	path = Mask_RCNN
+	url = https://github.com/matterport/Mask_RCNN
