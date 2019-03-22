@@ -3,7 +3,7 @@ python ./PhotoSketch/test_pretrained.py \
     --dataset_mode test_dir \
     --dataroot cats \
     --results_dir contours \
-    --checkpoints_dir ./PhotoSketch/pretrained \
+    --checkpoints_dir ./PhotoSketch \
     --model pix2pix \
     --which_direction AtoB \
     --norm batch \

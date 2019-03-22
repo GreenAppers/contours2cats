@@ -19,6 +19,9 @@ mkdir mask_logs
 
 ## Make contour drawings with [PhotoSketch](https://github.com/mtli/PhotoSketch)
 
+Download pretrained model from https://github.com/mtli/PhotoSketch/tree/0f28087d0b7fb5d4e4e13957ad2395e7e315042a
+into ./PhotoSketch/pretrained/
+
 ```
 mkdir contours
 ./cats2contours.sh
@@ -34,18 +37,34 @@ python pix2pix-tensorflow/tools/process.py --input_dir contours --operation resi
 
 mkdir contours2cats
 python pix2pix-tensorflow/tools/process.py \
-  --input_dir resized-contours
-  --b_dir resized-cats
-  --operation combine
+  --input_dir resized-contours \
+  --b_dir resized-cats \
+  --operation combine \
   --output_dir contours2cats
 ```
 
 ## Train contours2cats with [pix2pix-tensorflow](https://github.com/affinelayer/pix2pix-tensorflow)
 
 ```
+mkdir contours2cats_train
 python pix2pix-tensorflow/pix2pix.py \
   --mode train \
-  --output_dir contours2cats_train \
   --max_epochs 200 \
-  --input_dir contours2cats
+  --save_freq 2000 \
+  --norm_type tflite_compatible \
+  --input_dir contours2cats \
+  --output_dir contours2cats_train
 ```
+
+## Export contours2cats model
+
+```
+mkdir contours2cats_export
+python pix2pix-tensorflow/pix2pix.py \
+  --mode export \
+  --export_format tflite \
+  --norm_type tflite_compatible \
+  --checkpoint contours2cats_train \
+  --output_dir contours2cats_export
+```
+
