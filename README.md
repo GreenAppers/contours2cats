@@ -21,7 +21,7 @@ mkdir mask_logs
 
 ## Make contour drawings with [PhotoSketch](https://github.com/mtli/PhotoSketch)
 
-![](assets/cat.png) ![](assets/arrow.png) ![](assets/contour.png)
+![](assets/cat.png) ![](assets/arrow.png) ![](assets/contours.png)
 
 Download pretrained model from https://github.com/mtli/PhotoSketch/tree/0f28087d0b7fb5d4e4e13957ad2395e7e315042a
 into ./PhotoSketch/pretrained/
