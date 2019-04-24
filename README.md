@@ -11,6 +11,8 @@ into ./data/CATS*/*.jpg
 
 ## Grep for cats with [Mask_RCNN](https://github.com/matterport/Mask_RCNN)
 
+![](assets/input.png) ![](assets/arrow.png) ![](assets/cat.png)
+
 ```
 mkdir cats
 mkdir mask_logs
@@ -18,6 +20,8 @@ mkdir mask_logs
 ```
 
 ## Make contour drawings with [PhotoSketch](https://github.com/mtli/PhotoSketch)
+
+![](assets/cat.png) ![](assets/arrow.png) ![](assets/contour.png)
 
 Download pretrained model from https://github.com/mtli/PhotoSketch/tree/0f28087d0b7fb5d4e4e13957ad2395e7e315042a
 into ./PhotoSketch/pretrained/
@@ -28,6 +32,8 @@ mkdir contours
 ```
 
 ## Prepare training data
+
+![](assets/train.png)
 
 ```
 mkdir resized-cats
@@ -53,7 +59,21 @@ python pix2pix-tensorflow/pix2pix.py \
   --save_freq 2000 \
   --norm_type tflite_compatible \
   --input_dir contours2cats \
-  --output_dir contours2cats_train
+  --output_dir contours2cats_train \
+  --checkpoint contours2cats_train \
+  --l1_weight 2
+```
+
+## Test contours2cats
+
+```
+mkdir contours2cats_test
+python pix2pix-tensorflow/pix2pix.py \
+  --mode test \
+  --norm_type tflite_compatible \
+  --output_dir contours2cats_test \
+  --input_dir contours2cats \
+  --checkpoint contours2cats_train
 ```
 
 ## Export contours2cats model
